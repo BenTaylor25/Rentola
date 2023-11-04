@@ -2,11 +2,12 @@
 
 ## Request
 
-`POST /item`
-```json
+```
+POST /item
+
 {
     "name": string,
-    "qty": number
+    "qty": int
 }
 ```
 
