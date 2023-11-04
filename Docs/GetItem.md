@@ -6,6 +6,7 @@
 GET /item/{{id}}
 ```
 
+
 ## Sucess Response
 
 ```
