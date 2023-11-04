@@ -17,3 +17,18 @@ GET /item/{{id}}
     "qty": int
 }
 ```
+
+
+## Error Response
+
+```
+404 Not Found
+
+{
+    "errors": {
+        "Item.NotFound": [
+            "Item not found."
+        ]
+    }
+}
+```
