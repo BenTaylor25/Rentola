@@ -34,7 +34,10 @@ PUT /item/{{id}}/increment/{{amount}}
 {
     "errors": {
         "Item.QuantityMax": [
-            "Cannot increment quantity past 10,000"
+            "Cannot increment quantity past 10,000."
+        ],
+        "Item.InvalidIncrementAmount": [
+            "Increment amount must be a positive integer."
         ]
     }
 }

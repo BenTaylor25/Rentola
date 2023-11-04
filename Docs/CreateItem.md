@@ -42,10 +42,10 @@ POST /item
 
 {
     "errors": {
-        "Item.QtyNotPositive": [
+        "Item.QuantityNotPositive": [
             "Quantity must be positive."
         ],
-        "Item.QtyTooLarge": [
+        "Item.QuantityTooLarge": [
             "Quantity must not exceed 10,000."
         ]
         "Item.NameTooShort": [
