@@ -7,7 +7,7 @@ PUT /item/{{id}}/decrement/{{amount}}
 ```
 
 
-## Success Response
+## Success Responses
 
 ```
 204 No Content
