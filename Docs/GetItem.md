@@ -3,7 +3,7 @@
 ## Request
 
 ```
-GET /item/{{id}}
+GET /item/{{name}}
 ```
 
 
