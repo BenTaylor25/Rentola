@@ -3,7 +3,7 @@
 ## Request
 
 ```
-PUT /item/{{id}}/decrement/{{amount}}
+PUT /item/{{name}}/decrement/{{amount}}
 ```
 
 
