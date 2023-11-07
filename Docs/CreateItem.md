@@ -16,11 +16,8 @@ POST /item
 
 ```
 201 Created
-
-{
-    "id": string
-}
 ```
+(Often, you'd probably like to create an object with an ID and return it, but here I want the item `name` to be a unique identifier so it is not needed. With that said, I am not entirely sure if a 201 or 204 is most appropriate here.)
 
 
 ## Error Responses
