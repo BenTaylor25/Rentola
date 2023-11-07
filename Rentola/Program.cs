@@ -1,13 +1,17 @@
+using Rentola.Services.Items;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddScoped<IItemService, ItemService>();
     builder.Services.AddSwaggerGen();
 }
 
-
 var app = builder.Build();
+{
+    app.UseHttpsRedirection();
+    app.MapControllers();
+}
 
 if (app.Environment.IsDevelopment())
 {
@@ -15,7 +19,4 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 app.Run();
