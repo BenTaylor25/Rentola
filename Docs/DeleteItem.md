@@ -3,7 +3,7 @@
 ## Request
 
 ```
-DELTE /item/{{id}}
+DELTE /item/{{name}}
 ```
 
 
