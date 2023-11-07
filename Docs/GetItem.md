@@ -13,7 +13,6 @@ GET /item/{{id}}
 200 Ok
 
 {
-    "id": string,
     "name": string,
     "qty": int
 }
