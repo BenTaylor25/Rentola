@@ -6,7 +6,7 @@ using Rentola.Services.Items;
 
 namespace Rentola.Controllers;
 
-public class RentolaController : ApiController
+public class RentolaController : ControllerBase
 {
     private readonly IItemService _itemService;
 
