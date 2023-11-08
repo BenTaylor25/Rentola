@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace Rentola.Controllers;
 
 [ApiController]
-public class ApiController : ControllerBase
+public class RentolaControllerBase : ControllerBase
 {
     protected IActionResult Problem(List<Error> errors)
     {

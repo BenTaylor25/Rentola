@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using ErrorOr;
-using Rentola.Contracts.Item;
 using Rentola.Models;
+using Rentola.Contracts.Item;
 using Rentola.Services.Items;
 
 namespace Rentola.Controllers;
 
-public class RentolaController : ControllerBase
+public class RentolaController : RentolaControllerBase
 {
     private readonly IItemService _itemService;
 
@@ -24,8 +24,7 @@ public class RentolaController : ControllerBase
 
         if (requestToItemResult.IsError)
         {
-            // return Problem(requestToItemResult.Errors);
-            return Problem();
+            return Problem(requestToItemResult.Errors);
         }
         Item item = requestToItemResult.Value;
 
@@ -33,8 +32,7 @@ public class RentolaController : ControllerBase
 
         if (createItemResult.IsError)
         {
-            // return Problem(createItemResult.Errors);
-            return Problem();
+            return Problem(createItemResult.Errors);
         }
         return Ok();
     }
