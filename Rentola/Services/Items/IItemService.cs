@@ -1,7 +1,10 @@
 
+using ErrorOr;
+using Rentola.Models;
+
 namespace Rentola.Services.Items;
 
 public interface IItemService
 {
-    void CreateItem();
+    ErrorOr<Created> CreateItem(Item item);
 }
