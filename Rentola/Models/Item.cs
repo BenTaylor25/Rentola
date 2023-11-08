@@ -1,4 +1,5 @@
 using ErrorOr;
+using Rentola.Contracts.Item;
 
 namespace Rentola.Models;
 
@@ -51,5 +52,13 @@ public class Item
         }
 
         return new Item(name, qty);
+    }
+
+    public static ErrorOr<Item> From(CreateItemRequest request)
+    {
+        return Create(
+            request.Name,
+            request.Qty
+        );
     }
 }
