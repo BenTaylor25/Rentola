@@ -5,7 +5,7 @@ namespace Rentola.Services.Items;
 
 public class ItemService : IItemService
 {
-    private Dictionary<string, Item> _items = new();
+    private static readonly Dictionary<string, Item> _items = new();
 
     public ErrorOr<Created> CreateItem(Item item)
     {
