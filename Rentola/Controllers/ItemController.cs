@@ -36,6 +36,7 @@ public class RentolaController : RentolaControllerBase
         }
         return CreatedAtAction(
             actionName: nameof(CreateItem),   // replace with GetIitem
+            routeValues: new { name = item.Name },
             value: item
         );
     }
