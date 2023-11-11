@@ -42,8 +42,8 @@ public class RentolaController : RentolaControllerBase
         );
     }
 
-    [HttpGet("/item")]
-    public IActionResult GetItem([FromQuery]string name)
+    [HttpGet("/item/{name}")]
+    public IActionResult GetItem(string name)
     {
         ErrorOr<Item> getItemResponse = _itemService.GetItem(name);
 
