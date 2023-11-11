@@ -40,4 +40,15 @@ public class RentolaController : RentolaControllerBase
             value: item
         );
     }
+
+    public IActionResult GetItem(string name)
+    {
+        ErrorOr<Item> getItemResponse = _itemService.GetItem(name);
+
+        if (getItemResponse.IsError)
+        {
+            return Problem(getItemResponse.Errors);
+        }
+        return Ok();
+    }
 }
