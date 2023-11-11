@@ -10,7 +10,7 @@ public class Item
     public const int MAX_QTY = 10_000;
 
     public string Name { get; }
-    public int Qty { get; }
+    public int Qty { get; set; }
 
     private Item(
         string name,

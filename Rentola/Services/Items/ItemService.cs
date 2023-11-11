@@ -27,4 +27,21 @@ public class ItemService : IItemService
         }
         return Error.NotFound();
     }
+
+    public ErrorOr<Updated> IncrementItem(string name, int amount)
+    {
+        if (_items.TryGetValue(name, out var item))
+        {
+            if (item.Qty + amount <= 10_000)
+            {
+                item.Qty += amount;
+                return Result.Updated;
+            }
+
+            // Qty Max error
+        }
+
+        // Not Found error
+        return Error.NotFound();
+    }
 }
