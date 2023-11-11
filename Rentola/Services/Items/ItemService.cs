@@ -18,4 +18,13 @@ public class ItemService : IItemService
 
         return Result.Created;
     }
+
+    public ErrorOr<Item> GetItem(string name)
+    {
+        if (_items.TryGetValue(name, out var item))
+        {
+            return item;
+        }
+        return Error.NotFound();
+    }
 }
