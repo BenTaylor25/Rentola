@@ -34,6 +34,9 @@ public class RentolaController : RentolaControllerBase
         {
             return Problem(createItemResult.Errors);
         }
-        return Ok();
+        return CreatedAtAction(
+            actionName: nameof(CreateItem),   // replace with GetIitem
+            value: item
+        );
     }
 }
