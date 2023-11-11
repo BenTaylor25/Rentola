@@ -19,8 +19,6 @@ public class RentolaController : RentolaControllerBase
     [HttpPost("/item")]
     public IActionResult CreateItem(CreateItemRequest request)
     {
-        Console.WriteLine("Hello, World!");
-
         ErrorOr<Item> requestToItemResult = Item.From(request);
 
         if (requestToItemResult.IsError)
