@@ -3,6 +3,7 @@ using ErrorOr;
 using Rentola.Models;
 using Rentola.Contracts.Item;
 using Rentola.Services.Items;
+using Rentola.Constracts.Item;
 
 namespace Rentola.Controllers;
 
@@ -41,7 +42,8 @@ public class RentolaController : RentolaControllerBase
         );
     }
 
-    public IActionResult GetItem(string name)
+    [HttpGet("/item")]
+    public IActionResult GetItem([FromQuery]string name)
     {
         ErrorOr<Item> getItemResponse = _itemService.GetItem(name);
 
@@ -49,6 +51,9 @@ public class RentolaController : RentolaControllerBase
         {
             return Problem(getItemResponse.Errors);
         }
-        return Ok();
+        return Ok(new ItemResponse(
+            getItemResponse.Value.Name,
+            getItemResponse.Value.Qty
+        ));
     }
 }
