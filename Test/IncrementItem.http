@@ -1,0 +1,5 @@
+
+@itemname = box
+@amount = 10
+
+PUT http://localhost:5006/item/{{itemname}}/increment/{{amount}}
