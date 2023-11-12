@@ -66,4 +66,16 @@ public class RentolaController : RentolaControllerBase
         }
         return Ok(incrementItemResponse.Value);
     }
+
+    [HttpPut("/item/{name}/decrement/{amount}")]
+    public IActionResult DecrementItem(string name, int amount)
+    {
+        ErrorOr<Item> decrementItemResponse = _itemService.DecrementItem(name, amount);
+
+        if (decrementItemResponse.IsError)
+        {
+            return Problem(decrementItemResponse.Errors);
+        }
+        return Ok(decrementItemResponse.Value);
+    }
 }
