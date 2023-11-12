@@ -1,6 +1,7 @@
 using ErrorOr;
 using Rentola.Models;
 using Rentola.ServiceErrors;
+using Rentola.Services.Results.DecrementItemResult;
 
 namespace Rentola.Services.Items;
 
@@ -47,14 +48,27 @@ public class ItemService : IItemService
         return Error.NotFound();
     }
 
-    public ErrorOr<Item> DecrementItem(string name, int amount)
+    public ErrorOr<DecrementItemResult> DecrementItem(string name, int amount)
     {
         if (_items.TryGetValue(name, out var item))
         {
-            if (item.Qty - amount >= 0)
+            if (item.Qty - amount > 0)
             {
                 item.Qty -= amount;
-                return item;
+                return new DecrementItemResult(
+                    WasDeleted: false,
+                    Item: item
+                );
+            }
+            else if (item.Qty - amount == 0)
+            {
+                ErrorOr<Deleted> deletedItemResponse = DeleteItem(name);
+
+                if (deletedItemResponse.IsError)
+                {
+                    return deletedItemResponse.Errors;
+                }
+                return new DecrementItemResult(WasDeleted: true);
             }
 
             // Qty <0 error

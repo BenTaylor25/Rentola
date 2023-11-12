@@ -4,6 +4,7 @@ using Rentola.Models;
 using Rentola.Contracts.Item;
 using Rentola.Services.Items;
 using Rentola.Constracts.Item;
+using Rentola.Services.Results.DecrementItemResult;
 
 namespace Rentola.Controllers;
 
@@ -70,13 +71,18 @@ public class RentolaController : RentolaControllerBase
     [HttpPut("/item/{name}/decrement/{amount}")]
     public IActionResult DecrementItem(string name, int amount)
     {
-        ErrorOr<Item> decrementItemResponse = _itemService.DecrementItem(name, amount);
+        ErrorOr<DecrementItemResult> decrementItemResponse = _itemService.DecrementItem(name, amount);
 
         if (decrementItemResponse.IsError)
         {
             return Problem(decrementItemResponse.Errors);
         }
-        return Ok(decrementItemResponse.Value);
+        
+        if (decrementItemResponse.Value.WasDeleted)
+        {
+            return NoContent();
+        }
+        return Ok(decrementItemResponse.Value.Item);
     }
 
     [HttpDelete("/item/{name}")]
