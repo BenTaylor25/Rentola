@@ -58,6 +58,12 @@ public class RentolaController : RentolaControllerBase
     [HttpPut("/item/{name}/increment/{amount}")]
     public IActionResult IncrementItem(string name, int amount)
     {
-        ErrorOr<Updated> incrementItemResponse = _itemService.IncrementItem(name, amount);
+        ErrorOr<Item> incrementItemResponse = _itemService.IncrementItem(name, amount);
+        
+        if (incrementItemResponse.IsError)
+        {
+            return Problem(incrementItemResponse.Errors);
+        }
+        return Ok(incrementItemResponse.Value);
     }
 }
