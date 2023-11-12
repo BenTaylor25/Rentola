@@ -40,7 +40,7 @@ public class ItemService : IItemService
             }
 
             // Qty Max error
-            return Errors.Item.QuantityMax;
+            return Errors.Item.QuantityTooLarge;
         }
 
         // Not Found error

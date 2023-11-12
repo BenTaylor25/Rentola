@@ -4,5 +4,5 @@ Content-Type: application/json
 
 {
     "name": "box",
-    "qty": "5"
+    "qty": "50000"
 }
