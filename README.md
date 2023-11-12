@@ -17,5 +17,5 @@ Decrementing an Item's quantity to 0 will result in its deletion.
 
 
 ## Status
-Backend: Done-ish; need cleaning up, and potentially new features.  
+Backend: Done-ish; needs cleaning up, and potentially new features.  
 Frontend: Just about to start.
