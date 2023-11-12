@@ -64,4 +64,15 @@ public class ItemService : IItemService
         // Not Found error
         return Error.NotFound();
     }
+
+    public ErrorOr<Deleted> DeleteItem(string name)
+    {
+        bool wasPresent = _items.Remove(name);
+
+        if (wasPresent)
+        {
+            return Result.Deleted;
+        }
+        return Error.NotFound();
+    }
 }

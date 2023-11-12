@@ -11,4 +11,5 @@ public interface IItemService
     ErrorOr<Item> GetItem(string name);
     ErrorOr<Item> IncrementItem(string name, int amount);
     ErrorOr<Item> DecrementItem(string name, int amount);
+    ErrorOr<Deleted> DeleteItem(string name);
 }
