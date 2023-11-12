@@ -46,4 +46,22 @@ public class ItemService : IItemService
         // Not Found error
         return Error.NotFound();
     }
+
+    public ErrorOr<Item> DecrementItem(string name, int amount)
+    {
+        if (_items.TryGetValue(name, out var item))
+        {
+            if (item.Qty - amount >= 0)
+            {
+                item.Qty -= amount;
+                return item;
+            }
+
+            // Qty Max error
+            return Errors.Item.QuantityTooLarge;
+        }
+
+        // Not Found error
+        return Error.NotFound();
+    }
 }
