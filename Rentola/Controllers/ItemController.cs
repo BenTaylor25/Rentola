@@ -78,4 +78,16 @@ public class RentolaController : RentolaControllerBase
         }
         return Ok(decrementItemResponse.Value);
     }
+
+    [HttpDelete("/item/{name}")]
+    public IActionResult DeleteItem(string name)
+    {
+        ErrorOr<Deleted> deleteItemResponse = _itemService.DeleteItem(name);
+
+        if (deleteItemResponse.IsError)
+        {
+            return Problem(deleteItemResponse.Errors);
+        }
+        return Ok(deleteItemResponse.Value);
+    }
 }
