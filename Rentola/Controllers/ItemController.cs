@@ -88,6 +88,6 @@ public class RentolaController : RentolaControllerBase
         {
             return Problem(deleteItemResponse.Errors);
         }
-        return Ok(deleteItemResponse.Value);
+        return NoContent();
     }
 }
