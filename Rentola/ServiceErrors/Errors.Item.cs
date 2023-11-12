@@ -18,12 +18,12 @@ public static class Errors
 
         public static Error NameTooShort => Error.Validation(
             code: "Item.NameTooShort",
-            description: $"Item name length must be at least {Models.Item.MIN_NAME_LEN} character."
+            description: $"Item name length must be at least {Models.Item.MIN_NAME_LEN} characters."
         );
 
         public static Error NameTooLong => Error.Validation(
             code: "Item.NameTooLong",
-            description: $"Item name length must be at least {Models.Item.MAX_NAME_LEN} character."
+            description: $"Item name length must be at most {Models.Item.MAX_NAME_LEN} characters."
         );
     }
 }

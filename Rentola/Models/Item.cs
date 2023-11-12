@@ -29,9 +29,9 @@ public class Item
     {
         List<Error> errors = new();
 
-        if (qty < 0)
+        if (qty <= 0)
         {
-            // errors.Add(Errors.Item.QuantityNotPositive);
+            errors.Add(Errors.Item.QuantityNotPositive);
         }
         else if (qty > MAX_QTY)
         {
@@ -41,11 +41,11 @@ public class Item
 
         if (name.Length < MIN_NAME_LEN)
         {
-            // errors.Add(Errors.Item.NameTooShort);
+            errors.Add(Errors.Item.NameTooShort);
         }
         else if (name.Length > MAX_NAME_LEN)
         {
-            // errors.Add(Errors.Item.NameTooLong);
+            errors.Add(Errors.Item.NameTooLong);
         }
 
         if (errors.Any())
