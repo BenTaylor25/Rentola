@@ -1,5 +1,6 @@
 using ErrorOr;
 using Rentola.Models;
+using Rentola.ServiceErrors;
 
 namespace Rentola.Services.Items;
 
@@ -39,6 +40,7 @@ public class ItemService : IItemService
             }
 
             // Qty Max error
+            return Errors.Item.QuantityMax;
         }
 
         // Not Found error
