@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Item } from './types/Item';
 import RentolaNav from './components/base/RentolaNav';
 import ItemsContainer from './components/ItemsContainer';
+import { IItem } from './components/Item';
 import './App.scss';
 
 export default function App() {
-  const [items, setItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<IItem[]>([]);
 
-  const newTestItem: Item = {
+  const newTestItem: IItem = {
     name: "foo",
     qty: 1
   };

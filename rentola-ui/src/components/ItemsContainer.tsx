@@ -1,7 +1,7 @@
-import { Item } from "../types/Item";
+import Item, { IItem } from "./Item";
 
 interface ItemsSectionProps {
-    items: Item[]
+    items: IItem[]
 }
 
 export default function ItemsContainer(props: ItemsSectionProps) {
@@ -10,7 +10,14 @@ export default function ItemsContainer(props: ItemsSectionProps) {
 
     return(
         <>
-            [items]
+            {
+                props.items.map(item =>
+                    <Item
+                        key={item.name}
+                        name={item.name}
+                        qty={item.qty} />
+                )
+            }
         </>
     );
 }
