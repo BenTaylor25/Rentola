@@ -1,4 +1,5 @@
 import Item, { IItem } from "./Item";
+import './ItemsContainer.scss';
 
 interface ItemsSectionProps {
     items: IItem[]
@@ -6,10 +7,8 @@ interface ItemsSectionProps {
 
 export default function ItemsContainer(props: ItemsSectionProps) {
 
-    console.log(props.items);
-
     return(
-        <>
+        <div id="items-container">
             {
                 props.items.map(item =>
                     <Item
@@ -18,6 +17,6 @@ export default function ItemsContainer(props: ItemsSectionProps) {
                         qty={item.qty} />
                 )
             }
-        </>
+        </div>
     );
 }

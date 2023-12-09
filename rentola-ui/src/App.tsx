@@ -12,8 +12,20 @@ export default function App() {
     qty: 1
   };
 
+  const newTestItem2: IItem = {
+    name: "bar",
+    qty: 2
+  };
+
+  const newTestItem3: IItem = {
+    name: "baz",
+    qty: 3
+  };
+
   useEffect(() => {
     setItems([...items, newTestItem]);
+    setItems([...items, newTestItem2]);
+    setItems([...items, newTestItem3]);
   }, []);
 
   return (
