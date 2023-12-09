@@ -7,7 +7,14 @@ export default function App() {
   return (
     <>
       <RentolaNav />
-      {/* new item section */}
+
+      <div>
+        {/* search item section */}
+        {/* new item section */}
+      </div>
+
+      {/* error list */}
+
       {/* existing items section */}
     </>
   );
