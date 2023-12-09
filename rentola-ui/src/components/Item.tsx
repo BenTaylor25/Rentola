@@ -1,3 +1,4 @@
+import './Item.scss';
 
 export interface IItem {
   name: string,
@@ -6,7 +7,7 @@ export interface IItem {
 
 export default function Item(props: IItem) {
     return (
-        <div>
+        <div className="item">
             <p>{props.name}</p>
             <p>{props.qty}</p>
         </div>
