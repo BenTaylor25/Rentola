@@ -3,6 +3,7 @@ import RentolaNav from './components/base/RentolaNav';
 import ItemsContainer from './components/ItemsContainer';
 import { IItem } from './components/Item';
 import './App.scss';
+import SearchBar from './components/SearchBar';
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
@@ -34,6 +35,8 @@ export default function App() {
 
       <div>
         {/* search item section */}
+        <SearchBar />
+
         {/* new item section */}
       </div>
 
