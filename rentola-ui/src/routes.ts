@@ -1,2 +1,2 @@
 
-export const server_route = "http://localhost:5006";
+export const serverRoute = "http://localhost:5006";
