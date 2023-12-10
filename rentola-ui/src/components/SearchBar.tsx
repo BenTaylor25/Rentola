@@ -13,14 +13,10 @@ export default function SearchBar(props: SearchBarProps) {
     function search() {
         fetch(`${serverRoute}/item/${searchText}`)
             .then(res => res.json())
-            .then(data => console.log(data));
-
-        const newTestItem: IItem = {
-            name: "foo",
-            qty: 1
-        };
-
-        props.appendItem(newTestItem);
+            .then(res => {
+                // BREAKS ON ERROR RESPONSES
+                props.appendItem(res);
+            });
     }
 
     return (
