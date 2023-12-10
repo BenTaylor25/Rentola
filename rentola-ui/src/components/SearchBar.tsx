@@ -1,9 +1,10 @@
+import { server_route } from '../routes';
 import './SearchBar.scss';
 
 export default function SearchBar() {
 
     function search() {
-        fetch("http://localhost:5006/item/box")
+        fetch(`${server_route}/item/box`)
             .then(res => res.json())
             .then(data => console.log(data));
     }
