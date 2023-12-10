@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import RentolaNav from './components/base/RentolaNav';
 import ItemsContainer from './components/ItemsContainer';
 import { IItem } from './components/Item';
@@ -7,27 +7,9 @@ import SearchBar from './components/SearchBar';
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
-
-  const newTestItem: IItem = {
-    name: "foo",
-    qty: 1
-  };
-
-  const newTestItem2: IItem = {
-    name: "bar",
-    qty: 2
-  };
-
-  const newTestItem3: IItem = {
-    name: "baz",
-    qty: 3
-  };
-
-  useEffect(() => {
-    setItems([...items, newTestItem]);
-    setItems([...items, newTestItem2]);
-    setItems([...items, newTestItem3]);
-  }, []);
+  function appendItem(newItem: IItem) {
+    setItems([...items, newItem]);
+  }
 
   return (
     <>
@@ -35,7 +17,7 @@ export default function App() {
 
       <div>
         {/* search item section */}
-        <SearchBar />
+        <SearchBar appendItem={appendItem} />
 
         {/* new item section */}
       </div>
