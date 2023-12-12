@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { KeyboardEvent, useState } from 'react';
 import { serverRoute } from '../routes';
 import { IItem } from './Item';
 import './SearchBar.scss';
@@ -31,13 +31,20 @@ export default function SearchBar(props: SearchBarProps) {
             });
     }
 
+    function detectEnterKey(e: KeyboardEvent) {
+        if (e.key === 'Enter') {
+            search();
+        }
+    }
+
     return (
         <div id="search-bar">
             <input
                 id="search-bar-text"
                 type="text"
                 placeholder="Search Items"
-                onChange={e => setSearchText(e.target.value)} />
+                onChange={e => setSearchText(e.target.value)}
+                onKeyDown={detectEnterKey} />
 
             <button
                 id="search-bar-button"
