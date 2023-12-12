@@ -29,6 +29,9 @@ export default function SearchBar(props: SearchBarProps) {
                 // To do: add to UI Error List.
                 console.log(err.message);
             });
+
+        // Clear search bar.
+        setSearchText("");
     }
 
     function detectEnterKey(e: KeyboardEvent) {
@@ -43,6 +46,7 @@ export default function SearchBar(props: SearchBarProps) {
                 id="search-bar-text"
                 type="text"
                 placeholder="Search Items"
+                value={searchText}
                 onChange={e => setSearchText(e.target.value)}
                 onKeyDown={detectEnterKey} />
 
