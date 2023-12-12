@@ -12,10 +12,18 @@ export default function SearchBar(props: SearchBarProps) {
 
     function search() {
         fetch(`${serverRoute}/item/${searchText}`)
-            .then(res => res.json())
             .then(res => {
-                // BREAKS ON ERROR RESPONSES
-                props.appendItem(res);
+                if (res.ok) {
+                    return res.json()
+                }
+                throw Error(res.statusText);
+            })
+            .then(body => {
+                props.appendItem(body);
+            })
+            .catch(err => {
+                // To do: add to UI Error List.
+                console.log(`Failed to load; ${err.message}`);
             });
     }
 
