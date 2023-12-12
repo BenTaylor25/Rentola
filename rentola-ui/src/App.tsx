@@ -7,8 +7,16 @@ import SearchBar from './components/SearchBar';
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
-  function appendItem(newItem: IItem) {
+
+  function appendItemIfUnique(newItem: IItem): boolean {
+    for (const item of items) {
+      if (item.name == newItem.name) {
+        return false;
+      }
+    }
+
     setItems([...items, newItem]);
+    return true;
   }
 
   return (
@@ -17,7 +25,7 @@ export default function App() {
 
       <div>
         {/* search item section */}
-        <SearchBar appendItem={appendItem} />
+        <SearchBar appendItemIfUnique={appendItemIfUnique} />
 
         {/* new item section */}
       </div>

@@ -4,7 +4,7 @@ import { IItem } from './Item';
 import './SearchBar.scss';
 
 interface SearchBarProps {
-    appendItem: (newItem: IItem) => void
+    appendItemIfUnique: (newItem: IItem) => boolean
 }
 
 export default function SearchBar(props: SearchBarProps) {
@@ -19,11 +19,15 @@ export default function SearchBar(props: SearchBarProps) {
                 throw Error(res.statusText);
             })
             .then(body => {
-                props.appendItem(body);
+                const wasUnique = props.appendItemIfUnique(body);
+
+                if (!wasUnique) {
+                    throw new Error("Item of this name has already been displayed");
+                }
             })
             .catch(err => {
                 // To do: add to UI Error List.
-                console.log(`Failed to load; ${err.message}`);
+                console.log(err.message);
             });
     }
 
