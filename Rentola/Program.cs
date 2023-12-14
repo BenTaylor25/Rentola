@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
     builder.Services.AddCors(setup => {
         setup.AddDefaultPolicy(policyBuilder => {
-            policyBuilder.WithOrigins("http://localhost:5173");
+            policyBuilder
+                .WithOrigins("http://localhost:5173")
+                .WithMethods("GET", "POST", "PUT", "DELETE");
         });
     });
 }
