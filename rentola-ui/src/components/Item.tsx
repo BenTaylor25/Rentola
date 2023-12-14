@@ -1,3 +1,4 @@
+import { RiDeleteBin2Fill } from "react-icons/ri";
 import './Item.scss';
 
 export interface IItem {
@@ -9,7 +10,16 @@ export default function Item(props: IItem) {
     return (
         <div className="item">
             <p>{props.name}</p>
-            <p>{props.qty}</p>
+
+            <div className="item-quantity">
+                <button>-</button>
+                <p>{props.qty}</p>
+                <button>+</button>
+            </div>
+
+            <button className="item-delete-button">
+                <RiDeleteBin2Fill />
+            </button>
         </div>
     );
 }
