@@ -19,6 +19,12 @@ export default function App() {
     return true;
   }
 
+  function deleteItem(itemName: string) {
+    setItems(items.filter(item => {
+      return item.name !== itemName;
+    }));
+  }
+
   return (
     <>
       <RentolaNav />
@@ -33,7 +39,7 @@ export default function App() {
       {/* error list */}
 
       {/* existing items section */}
-      <ItemsContainer items={items} />
+      <ItemsContainer items={items} deleteItem={deleteItem} />
     </>
   );
 }

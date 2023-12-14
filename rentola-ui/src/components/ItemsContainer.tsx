@@ -2,7 +2,8 @@ import Item, { IItem } from "./Item";
 import './ItemsContainer.scss';
 
 interface ItemsSectionProps {
-    items: IItem[]
+    items: IItem[],
+    deleteItem: (itemName: string) => void
 }
 
 export default function ItemsContainer(props: ItemsSectionProps) {
@@ -14,7 +15,8 @@ export default function ItemsContainer(props: ItemsSectionProps) {
                     <Item
                         key={item.name}
                         name={item.name}
-                        qty={item.qty} />
+                        qty={item.qty}
+                        delete={() => props.deleteItem(item.name)} />
                 )
             }
         </div>

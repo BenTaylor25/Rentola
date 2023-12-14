@@ -3,7 +3,8 @@ import './Item.scss';
 
 export interface IItem {
   name: string,
-  qty: number
+  qty: number,
+  delete: () => void
 }
 
 export default function Item(props: IItem) {
@@ -17,7 +18,9 @@ export default function Item(props: IItem) {
                 <button>+</button>
             </div>
 
-            <button className="item-delete-button">
+            <button
+                className="item-delete-button"
+                onClick={props.delete}>
                 <RiDeleteBin2Fill />
             </button>
         </div>
