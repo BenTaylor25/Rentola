@@ -4,6 +4,7 @@ import ItemsContainer from './components/ItemsContainer';
 import { IItem } from './components/Item';
 import './App.scss';
 import SearchBar from './components/SearchBar';
+import { serverRoute } from './routes';
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
@@ -23,6 +24,10 @@ export default function App() {
     setItems(items.filter(item => {
       return item.name !== itemName;
     }));
+
+    fetch(`${serverRoute}/item/${itemName}`, {
+      method: "DELETE"
+    });
   }
 
   return (
