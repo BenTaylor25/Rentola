@@ -3,6 +3,46 @@ POST http://localhost:5006/item
 Content-Type: application/json
 
 {
-    "name": "box",
+    "name": "box 1",
     "qty": "5"
+}
+
+###
+
+POST http://localhost:5006/item
+Content-Type: application/json
+
+{
+    "name": "box 2",
+    "qty": "4"
+}
+
+###
+
+POST http://localhost:5006/item
+Content-Type: application/json
+
+{
+    "name": "box 3",
+    "qty": "3"
+}
+
+###
+
+POST http://localhost:5006/item
+Content-Type: application/json
+
+{
+    "name": "box 4",
+    "qty": "2"
+}
+
+###
+
+POST http://localhost:5006/item
+Content-Type: application/json
+
+{
+    "name": "box 5",
+    "qty": "1"
 }
