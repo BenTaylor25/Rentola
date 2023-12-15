@@ -1,0 +1,25 @@
+
+div#new-item-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 0.5rem;
+
+    div#new-item-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2a2f30;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 35%;
+        cursor: pointer;
+    }
+
+    p {
+        position: absolute;
+        color: white;
+        font-size: 2rem;
+    }
+}

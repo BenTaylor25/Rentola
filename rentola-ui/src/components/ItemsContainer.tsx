@@ -1,4 +1,5 @@
 import Item, { IItem } from "./Item";
+import NewItemButton from "./NewItemButton";
 import './ItemsContainer.scss';
 
 interface ItemsSectionProps {
@@ -19,6 +20,8 @@ export default function ItemsContainer(props: ItemsSectionProps) {
                         delete={() => props.deleteItem(item.name)} />
                 )
             }
+
+            <NewItemButton />
         </div>
     );
 }
