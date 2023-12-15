@@ -5,9 +5,11 @@ import { IItem } from './components/Item';
 import './App.scss';
 import SearchBar from './components/SearchBar';
 import { serverRoute } from './routes';
+import NewItemModal from './components/NewItemModal';
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
+  const [newItemModalOpen, setNewItemMoalOpen] = useState(true);
 
   function appendItemIfUnique(newItem: IItem): boolean {
     for (const item of items) {
@@ -45,6 +47,8 @@ export default function App() {
 
       {/* existing items section */}
       <ItemsContainer items={items} deleteItem={deleteItem} />
+
+      <NewItemModal open={newItemModalOpen} />
     </>
   );
 }
