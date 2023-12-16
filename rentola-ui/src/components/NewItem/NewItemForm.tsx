@@ -55,7 +55,7 @@ export default function NewItemForm() {
               {/*
                 This should really have min=1 and max=10000 but
                 I want to handle this on the server.
-            */}
+              */}
             </td>
           </tr>
         </tbody>
