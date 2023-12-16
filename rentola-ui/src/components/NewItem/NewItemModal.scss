@@ -9,12 +9,28 @@ div#new-item-modal-background {
   background-color: #0005;
 
   div#new-item-modal {
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 40vw;
     height: 60vh;
     background-color: lightgrey;
     border-radius: 1rem;
+
+    button#close-new-item-modal-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+      color: black;
+      font-size: 2rem;
+      font-weight: 800;
+      width: 6rem;
+      height: 6rem;
+      border: none;
+      outline: none;
+    }
   }
 }
