@@ -7,9 +7,18 @@ div#search-bar {
 
     input#search-bar-text {
         width: 30%;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+        padding-left: 0.5rem;
+        border-style: solid;
+        border-color: black;
     }
 
     button#search-bar-button {
         border-radius: 0;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border-style: solid;
+        border-color: black;
     }
 }

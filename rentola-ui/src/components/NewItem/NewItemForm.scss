@@ -9,6 +9,8 @@ form#new-item-form {
         font-size: 2rem;
         width: 20rem;
         padding: 0.5rem;
+        border-radius: 0.5rem;
+        border-style: solid;
 
         &[type=number] {
             width: 7.5rem;
