@@ -1,0 +1,21 @@
+
+form#new-item-form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    font-size: 2rem;
+
+    input {
+        font-size: 2rem;
+        width: 20rem;
+        padding: 0.5rem;
+
+        &[type=number] {
+            width: 7.5rem;
+        }
+    }
+
+    tr {
+        height: 6rem;
+    }
+}

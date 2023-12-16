@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
 import "./NewItemModal.scss";
+import NewItemForm from "./NewItemForm";
 
 interface NewItemModalProps {
   isOpen: boolean;
@@ -22,7 +23,7 @@ export default function NewItemModal(props: NewItemModalProps) {
   return (
     <div id="new-item-modal-background" onClick={modalClicked}>
       <div id="new-item-modal">
-        <h1>test</h1>
+        <NewItemForm />
       </div>
     </div>
   );
