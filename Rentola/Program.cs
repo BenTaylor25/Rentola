@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
         setup.AddDefaultPolicy(policyBuilder => {
             policyBuilder
                 .WithOrigins("http://localhost:5173")
-                .WithMethods("GET", "POST", "PUT", "DELETE");
+                .WithMethods("GET", "POST", "PUT", "DELETE")
+                .AllowAnyHeader();
         });
     });
 }
