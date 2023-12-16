@@ -5,7 +5,7 @@ import { IItem } from "./components/Item";
 import "./App.scss";
 import SearchBar from "./components/SearchBar";
 import { serverRoute } from "./routes";
-import NewItemModal from "./components/NewItemModal";
+import NewItemModal from "./components/NewItem/NewItemModal";
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);

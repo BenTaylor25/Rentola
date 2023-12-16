@@ -1,5 +1,5 @@
 import Item, { IItem } from "./Item";
-import NewItemButton from "./NewItemButton";
+import NewItemButton from "./NewItem/NewItemButton";
 import "./ItemsContainer.scss";
 
 interface ItemsSectionProps {
