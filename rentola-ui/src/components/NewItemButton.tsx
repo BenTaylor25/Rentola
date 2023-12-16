@@ -1,17 +1,15 @@
-import './NewItemButton.scss';
+import "./NewItemButton.scss";
 
-export default function NewItemButton() {
-    function openNewItemModal() {
-        console.log("hi");
-    }
+interface NewItemButtonProps {
+    openNewItemModal: () => void;
+}
 
-    return (
-        <div
-            id="new-item-button-container">
-            <div id="new-item-button"
-                onClick={openNewItemModal}>
-                <p>+</p>
-            </div>
-        </div>
-    );
+export default function NewItemButton(props: NewItemButtonProps) {
+  return (
+    <div id="new-item-button-container">
+      <div id="new-item-button" onClick={props.openNewItemModal}>
+        <p>+</p>
+      </div>
+    </div>
+  );
 }

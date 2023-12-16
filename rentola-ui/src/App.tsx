@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import RentolaNav from './components/base/RentolaNav';
-import ItemsContainer from './components/ItemsContainer';
-import { IItem } from './components/Item';
-import './App.scss';
-import SearchBar from './components/SearchBar';
-import { serverRoute } from './routes';
-import NewItemModal from './components/NewItemModal';
+import { useState } from "react";
+import RentolaNav from "./components/base/RentolaNav";
+import ItemsContainer from "./components/ItemsContainer";
+import { IItem } from "./components/Item";
+import "./App.scss";
+import SearchBar from "./components/SearchBar";
+import { serverRoute } from "./routes";
+import NewItemModal from "./components/NewItemModal";
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
-  const [newItemModalOpen, setNewItemMoalOpen] = useState(true);
+  const [newItemModalOpen, setNewItemModalOpen] = useState(true);
 
   function appendItemIfUnique(newItem: IItem): boolean {
     for (const item of items) {
@@ -23,12 +23,14 @@ export default function App() {
   }
 
   function deleteItem(itemName: string) {
-    setItems(items.filter(item => {
-      return item.name !== itemName;
-    }));
+    setItems(
+      items.filter((item) => {
+        return item.name !== itemName;
+      })
+    );
 
     fetch(`${serverRoute}/item/${itemName}`, {
-      method: "DELETE"
+      method: "DELETE",
     });
   }
 
@@ -46,9 +48,16 @@ export default function App() {
       {/* error list */}
 
       {/* existing items section */}
-      <ItemsContainer items={items} deleteItem={deleteItem} />
+      <ItemsContainer
+        items={items}
+        deleteItem={deleteItem}
+        openNewItemModal={() => setNewItemModalOpen(true)}
+      />
 
-      <NewItemModal open={newItemModalOpen} />
+      <NewItemModal
+        isOpen={newItemModalOpen}
+        close={() => setNewItemModalOpen(false)}
+      />
     </>
   );
 }

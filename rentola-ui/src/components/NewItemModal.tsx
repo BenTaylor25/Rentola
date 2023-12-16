@@ -1,17 +1,20 @@
-import './NewItemModal.scss';
+import "./NewItemModal.scss";
 
 interface NewItemModalProps {
-    open: boolean
+  isOpen: boolean;
+  close: () => void;
 }
 
 export default function NewItemModal(props: NewItemModalProps) {
-    if (!props.open) {
-        return null;
-    }
+  if (!props.isOpen) {
+    return null;
+  }
 
-    return (
-        <div id="new-item-modal">
-            <h1>test</h1>
-        </div>
-    )
+  return (
+    <div id="new-item-modal-background" onClick={props.close}>
+      <div id="new-item-modal">
+        <h1>test</h1>
+      </div>
+    </div>
+  );
 }
