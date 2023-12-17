@@ -4,7 +4,11 @@ import "./Item.scss";
 export interface IItem {
   name: string;
   qty: number;
-  delete: () => void;
+  methods: {
+    increment: () => void;
+    decrement: () => void;
+    delete: () => void;
+  }
 }
 
 export default function Item(props: IItem) {
@@ -13,12 +17,12 @@ export default function Item(props: IItem) {
       <p>{props.name}</p>
 
       <div className="item-quantity">
-        <button>-</button>
+        <button onClick={props.methods.increment}>-</button>
         <p>{props.qty}</p>
-        <button>+</button>
+        <button onClick={props.methods.decrement}>+</button>
       </div>
 
-      <button className="item-delete-button" onClick={props.delete}>
+      <button className="item-delete-button" onClick={props.methods.delete}>
         <RiDeleteBin2Fill />
       </button>
     </div>

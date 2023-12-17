@@ -4,8 +4,12 @@ import "./ItemsContainer.scss";
 
 interface ItemsSectionProps {
   items: IItem[];
-  deleteItem: (itemName: string) => void;
   openNewItemModal: () => void;
+  itemMethods: {
+    incrementItem : (itemName: string) => void;
+    decrementItem : (itemName: string) => void;
+    deleteItem: (itemName: string) => void;
+  }
 }
 
 export default function ItemsContainer(props: ItemsSectionProps) {
@@ -16,7 +20,11 @@ export default function ItemsContainer(props: ItemsSectionProps) {
           key={item.name}
           name={item.name}
           qty={item.qty}
-          delete={() => props.deleteItem(item.name)}
+          methods={{
+            increment: () => props.itemMethods.incrementItem(item.name),
+            decrement: () => props.itemMethods.decrementItem(item.name),
+            delete: () => props.itemMethods.deleteItem(item.name)
+          }}
         />
       ))}
 

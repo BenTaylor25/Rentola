@@ -34,6 +34,18 @@ export default function App() {
     });
   }
 
+  function incrementItem(itemName: string) {
+    fetch(`${serverRoute}/item/${itemName}/increment`, {
+      method: "PUT"
+    });
+  }
+
+  function decrementItem(itemName: string) {
+    fetch(`${serverRoute}/item/${itemName}/decrement`, {
+      method: "PUT"
+    });
+  }
+
   return (
     <>
       <RentolaNav />
@@ -50,8 +62,12 @@ export default function App() {
       {/* existing items section */}
       <ItemsContainer
         items={items}
-        deleteItem={deleteItem}
         openNewItemModal={() => setNewItemModalOpen(true)}
+        itemMethods={{
+          incrementItem,
+          decrementItem,
+          deleteItem
+        }}
       />
 
       <NewItemModal
