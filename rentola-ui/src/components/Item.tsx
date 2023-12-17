@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import "./Item.scss";
 
@@ -12,14 +13,28 @@ export interface IItem {
 }
 
 export default function Item(props: IItem) {
+  const [uiQty, setUiQty] = useState(props.qty);
+
+  function incrementButtonClick() {
+    props.methods.increment();
+
+    setUiQty(uiQty + 1);
+  }
+
+  function decrementButtonClick() {
+    props.methods.decrement();
+
+    setUiQty(uiQty - 1);
+  }
+
   return (
     <div className="item">
       <p>{props.name}</p>
 
       <div className="item-quantity">
-        <button onClick={props.methods.decrement}>-</button>
-        <p>{props.qty}</p>
-        <button onClick={props.methods.increment}>+</button>
+        <button onClick={decrementButtonClick}>-</button>
+        <p>{uiQty}</p>
+        <button onClick={incrementButtonClick}>+</button>
       </div>
 
       <button className="item-delete-button" onClick={props.methods.delete}>
