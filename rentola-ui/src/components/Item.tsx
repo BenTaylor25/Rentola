@@ -17,9 +17,9 @@ export default function Item(props: IItem) {
       <p>{props.name}</p>
 
       <div className="item-quantity">
-        <button onClick={props.methods.increment}>-</button>
+        <button onClick={props.methods.decrement}>-</button>
         <p>{props.qty}</p>
-        <button onClick={props.methods.decrement}>+</button>
+        <button onClick={props.methods.increment}>+</button>
       </div>
 
       <button className="item-delete-button" onClick={props.methods.delete}>

@@ -35,13 +35,13 @@ export default function App() {
   }
 
   function incrementItem(itemName: string) {
-    fetch(`${serverRoute}/item/${itemName}/increment`, {
+    fetch(`${serverRoute}/item/${itemName}/increment/1`, {
       method: "PUT"
     });
   }
 
   function decrementItem(itemName: string) {
-    fetch(`${serverRoute}/item/${itemName}/decrement`, {
+    fetch(`${serverRoute}/item/${itemName}/decrement/1`, {
       method: "PUT"
     });
   }
