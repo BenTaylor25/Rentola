@@ -22,28 +22,33 @@ export default function App() {
     return true;
   }
 
+  
+  function incrementItem(itemName: string) {
+    fetch(`${serverRoute}/item/${itemName}/increment/1`, {
+      method: "PUT"
+    });
+  }
+  
+  function decrementItem(itemName: string) {
+    fetch(`${serverRoute}/item/${itemName}/decrement/1`, {
+      method: "PUT"
+    });
+  }
+  
   function deleteItem(itemName: string) {
-    setItems(
-      items.filter((item) => {
-        return item.name !== itemName;
-      })
-    );
+    deleteItemOnUI(itemName);
 
     fetch(`${serverRoute}/item/${itemName}`, {
       method: "DELETE",
     });
   }
 
-  function incrementItem(itemName: string) {
-    fetch(`${serverRoute}/item/${itemName}/increment/1`, {
-      method: "PUT"
-    });
-  }
-
-  function decrementItem(itemName: string) {
-    fetch(`${serverRoute}/item/${itemName}/decrement/1`, {
-      method: "PUT"
-    });
+  function deleteItemOnUI(itemName: string) {
+    setItems(
+      items.filter((item) => {
+        return item.name !== itemName;
+      })
+    );
   }
 
   return (
@@ -66,7 +71,8 @@ export default function App() {
         itemMethods={{
           incrementItem,
           decrementItem,
-          deleteItem
+          deleteItem,
+          deleteItemOnUI
         }}
       />
 

@@ -9,6 +9,7 @@ export interface IItem {
     increment: () => void;
     decrement: () => void;
     delete: () => void;
+    deleteOnUI: () => void;
   }
 }
 
@@ -24,7 +25,16 @@ export default function Item(props: IItem) {
   function decrementButtonClick() {
     props.methods.decrement();
 
-    setUiQty(uiQty - 1);
+    if (uiQty === 1) {
+      props.methods.deleteOnUI();
+      /*
+        The server will remove the item
+        using this same logic, so we don't
+        need to call delete on the API.
+      */
+    } else {
+      setUiQty(uiQty - 1);
+    }
   }
 
   return (

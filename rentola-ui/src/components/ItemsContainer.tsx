@@ -6,9 +6,10 @@ interface ItemsSectionProps {
   items: IItem[];
   openNewItemModal: () => void;
   itemMethods: {
-    incrementItem : (itemName: string) => void;
-    decrementItem : (itemName: string) => void;
+    incrementItem: (itemName: string) => void;
+    decrementItem: (itemName: string) => void;
     deleteItem: (itemName: string) => void;
+    deleteItemOnUI: (itemName: string) => void;
   }
 }
 
@@ -23,7 +24,8 @@ export default function ItemsContainer(props: ItemsSectionProps) {
           methods={{
             increment: () => props.itemMethods.incrementItem(item.name),
             decrement: () => props.itemMethods.decrementItem(item.name),
-            delete: () => props.itemMethods.deleteItem(item.name)
+            delete: () => props.itemMethods.deleteItem(item.name),
+            deleteOnUI: () => props.itemMethods.deleteItemOnUI(item.name)
           }}
         />
       ))}
