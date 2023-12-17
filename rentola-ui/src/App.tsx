@@ -57,6 +57,8 @@ export default function App() {
       <NewItemModal
         isOpen={newItemModalOpen}
         close={() => setNewItemModalOpen(false)}
+        appendItemIfUnique={appendItemIfUnique}
+        deleteItem={deleteItem}
       />
     </>
   );

@@ -1,10 +1,13 @@
 import { MouseEvent } from "react";
-import "./NewItemModal.scss";
 import NewItemForm from "./NewItemForm";
+import { IItem } from "../Item";
+import "./NewItemModal.scss";
 
 interface NewItemModalProps {
   isOpen: boolean;
   close: () => void;
+  appendItemIfUnique: (newItem: IItem) => void;
+  deleteItem: (itemName: string) => void;
 }
 
 export default function NewItemModal(props: NewItemModalProps) {
@@ -27,7 +30,7 @@ export default function NewItemModal(props: NewItemModalProps) {
         <button id="close-new-item-modal-button" onClick={props.close}>
           X
         </button>
-        <NewItemForm />
+        <NewItemForm appendItemIfUnique={props.appendItemIfUnique} deleteItem={props.deleteItem} />
       </div>
     </div>
   );

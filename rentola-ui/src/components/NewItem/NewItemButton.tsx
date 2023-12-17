@@ -1,7 +1,7 @@
 import "./NewItemButton.scss";
 
 interface NewItemButtonProps {
-    openNewItemModal: () => void;
+  openNewItemModal: () => void;
 }
 
 export default function NewItemButton(props: NewItemButtonProps) {

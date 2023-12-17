@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { IItem } from "../Item";
 import { serverRoute } from "../../routes";
 import "./NewItemForm.scss";
 
-export default function NewItemForm() {
+interface NewItemFormProps {
+  appendItemIfUnique: (newItem: IItem) => void;
+  deleteItem: (itemName: string) => void;
+}
+
+export default function NewItemForm(props: NewItemFormProps) {
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -20,6 +26,14 @@ export default function NewItemForm() {
     .then(res => res.json())
     .then(res => {
       console.log(res);
+
+      const newItem: IItem = {
+        name: itemName,
+        qty: quantity,
+        delete: () => props.deleteItem(itemName)
+      };
+
+      props.appendItemIfUnique(newItem);
     });
   }
 
