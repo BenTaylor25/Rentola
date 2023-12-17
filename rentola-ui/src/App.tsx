@@ -9,7 +9,7 @@ import NewItemModal from "./components/NewItem/NewItemModal";
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
-  const [newItemModalOpen, setNewItemModalOpen] = useState(true);
+  const [newItemModalOpen, setNewItemModalOpen] = useState(false);
 
   function appendItemIfUnique(newItem: IItem): boolean {
     for (const item of items) {
