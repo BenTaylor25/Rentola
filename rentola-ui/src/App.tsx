@@ -29,7 +29,10 @@ export default function App() {
   }
 
   function resetErrors() {
+    console.log("what?");
+    console.log(errors);
     setErrors([]);
+    console.log(errors);
   }
 
   function incrementItem(itemName: string) {
@@ -64,7 +67,12 @@ export default function App() {
     <>
       <RentolaNav />
 
-      <SearchBar appendItemIfUnique={appendItemIfUnique} />
+      <SearchBar
+        appendItemIfUnique={appendItemIfUnique}
+        errorList={{
+          appendError,
+          resetErrors
+        }} />
 
       <ErrorList errors={errors} />
 

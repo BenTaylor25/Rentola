@@ -4,13 +4,19 @@ import { IItem } from './Item';
 import './SearchBar.scss';
 
 interface SearchBarProps {
-    appendItemIfUnique: (newItem: IItem) => boolean
+    appendItemIfUnique: (newItem: IItem) => boolean,
+    errorList: {
+        appendError: (newError: string) => void,
+        resetErrors: () => void
+    }
 }
 
 export default function SearchBar(props: SearchBarProps) {
     const [searchText, setSearchText] = useState("");
 
     function search() {
+        props.errorList.resetErrors();
+
         fetch(`${serverRoute}/item/${searchText}`)
             .then(res => {
                 if (res.ok) {
@@ -25,9 +31,8 @@ export default function SearchBar(props: SearchBarProps) {
                     throw new Error("Item of this name has already been displayed");
                 }
             })
-            .catch(err => {
-                // To do: add to UI Error List.
-                console.log(err.message);
+            .catch(() => {
+                props.errorList.appendError(`Item '${searchText}' could not be found.`);
             });
 
         // Clear search bar.
