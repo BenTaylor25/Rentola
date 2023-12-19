@@ -6,10 +6,12 @@ import "./App.scss";
 import SearchBar from "./components/SearchBar";
 import { serverRoute } from "./routes";
 import NewItemModal from "./components/NewItem/NewItemModal";
+import ErrorList from "./components/ErrorList";
 
 export default function App() {
   const [items, setItems] = useState<IItem[]>([]);
   const [newItemModalOpen, setNewItemModalOpen] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
 
   function appendItemIfUnique(newItem: IItem): boolean {
     for (const item of items) {
@@ -22,7 +24,14 @@ export default function App() {
     return true;
   }
 
-  
+  function appendError(newError: string) {
+    setErrors([...errors, newError]);
+  }
+
+  function resetErrors() {
+    setErrors([]);
+  }
+
   function incrementItem(itemName: string) {
     fetch(`${serverRoute}/item/${itemName}/increment/1`, {
       method: "PUT"
@@ -55,16 +64,10 @@ export default function App() {
     <>
       <RentolaNav />
 
-      <div>
-        {/* search item section */}
-        <SearchBar appendItemIfUnique={appendItemIfUnique} />
+      <SearchBar appendItemIfUnique={appendItemIfUnique} />
 
-        {/* new item section */}
-      </div>
+      <ErrorList errors={errors} />
 
-      {/* error list */}
-
-      {/* existing items section */}
       <ItemsContainer
         items={items}
         openNewItemModal={() => setNewItemModalOpen(true)}
