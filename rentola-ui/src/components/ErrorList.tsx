@@ -8,7 +8,7 @@ export default function ErrorList(props: ErrorListProps) {
         <ul id="error-list">
             {props.errors.map(error => {
                 return (
-                    <li>{error}</li>
+                    <li key={error}>{error}</li>
                 );
             })}
         </ul>
