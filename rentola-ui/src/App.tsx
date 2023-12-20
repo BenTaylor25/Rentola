@@ -25,14 +25,11 @@ export default function App() {
   }
 
   function appendError(newError: string) {
-    setErrors([...errors, newError]);
+    setErrors(errors => [...errors, newError]);
   }
 
   function resetErrors() {
-    console.log("what?");
-    console.log(errors);
-    setErrors([]);
-    console.log(errors);
+    setErrors(() => []);
   }
 
   function incrementItem(itemName: string) {
