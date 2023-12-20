@@ -1,0 +1,11 @@
+
+ul#error-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+        color: maroon;
+        font-size: 1.25rem;
+    }
+}

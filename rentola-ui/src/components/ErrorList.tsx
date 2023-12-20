@@ -1,3 +1,4 @@
+import "./ErrorList.scss";
 
 interface ErrorListProps {
     errors: string[]
