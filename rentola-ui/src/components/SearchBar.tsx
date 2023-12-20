@@ -2,6 +2,7 @@ import { KeyboardEvent, useState } from 'react';
 import { serverRoute } from '../routes';
 import { IItem } from './Item';
 import './SearchBar.scss';
+import { ERR_ITEM_ALREADY_DISPLAYED } from '../errorMessages';
 
 interface SearchBarProps {
     appendItemIfUnique: (newItem: IItem) => boolean,
@@ -22,17 +23,18 @@ export default function SearchBar(props: SearchBarProps) {
                 if (res.ok) {
                     return res.json()
                 }
-                throw Error(res.statusText);
+                console.log(res.statusText);
+                throw Error(`Item '${searchText}' could not be found.`);
             })
             .then(body => {
                 const wasUnique = props.appendItemIfUnique(body);
 
                 if (!wasUnique) {
-                    throw new Error("Item of this name has already been displayed");
+                    throw new Error(ERR_ITEM_ALREADY_DISPLAYED);
                 }
             })
-            .catch(() => {
-                props.errorList.appendError(`Item '${searchText}' could not be found.`);
+            .catch(err => {
+                props.errorList.appendError(err.message);
             });
 
         // Clear search bar.
