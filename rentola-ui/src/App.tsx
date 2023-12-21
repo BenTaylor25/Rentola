@@ -32,6 +32,15 @@ export default function App() {
     setErrors(() => []);
   }
 
+  function itemIsOnUI(itemName: string): boolean {
+    for (const item of items) {
+      if (item.name === itemName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   function incrementItem(itemName: string) {
     fetch(`${serverRoute}/item/${itemName}/increment/1`, {
       method: "PUT"
@@ -92,7 +101,8 @@ export default function App() {
           incrementItem,
           decrementItem,
           deleteItem,
-          deleteItemOnUI
+          deleteItemOnUI,
+          itemIsOnUI
         }}
         appendError={appendError}
       />

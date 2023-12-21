@@ -11,6 +11,7 @@ interface NewItemFormProps {
     decrementItem: (itemName: string) => void;
     deleteItem: (itemName: string) => void;
     deleteItemOnUI: (itemName: string) => void;
+    itemIsOnUI: (itemName: string) => boolean;
   }
   appendError: (newError: string) => void;
 }
@@ -19,7 +20,22 @@ export default function NewItemForm(props: NewItemFormProps) {
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
 
-  function createItem() {
+  function addItemToUI() {
+      const newItem: IItem = {
+        name: itemName,
+        qty: quantity,
+        methods: {
+          increment: () => props.itemMethods.incrementItem(itemName),
+          decrement: () => props.itemMethods.decrementItem(itemName),
+          delete: () => props.itemMethods.deleteItem(itemName),
+          deleteOnUI: () => props.itemMethods.deleteItemOnUI(itemName)
+        }
+      };
+
+      props.appendItemIfUnique(newItem);
+  }
+
+  function createItemRequest() {
     fetch(`${serverRoute}/item`, {
       method: "POST",
       headers: {
@@ -33,24 +49,14 @@ export default function NewItemForm(props: NewItemFormProps) {
     .then(res => res.json())
     .then(res => {
       if (res.status === 409) {
-        // if in view
-
-        // if not in view
-        throw new Error("409");
-      }
-
-      const newItem: IItem = {
-        name: itemName,
-        qty: quantity,
-        methods: {
-          increment: () => props.itemMethods.incrementItem(itemName),
-          decrement: () => props.itemMethods.decrementItem(itemName),
-          delete: () => props.itemMethods.deleteItem(itemName),
-          deleteOnUI: () => props.itemMethods.deleteItemOnUI(itemName)
+        if (props.itemMethods.itemIsOnUI(itemName)) {
+          throw new Error("409");
+        } else {
+          addItemToUI();
+          throw new Error("409 - adding to ui");
         }
-      };
-
-      props.appendItemIfUnique(newItem);
+      }
+      addItemToUI();
     })
     .catch(err => {
       props.appendError(err.message);
@@ -97,7 +103,7 @@ export default function NewItemForm(props: NewItemFormProps) {
         </tbody>
       </table>
 
-      <button type="button" onClick={createItem}>
+      <button type="button" onClick={createItemRequest}>
         Create
       </button>
     </form>
