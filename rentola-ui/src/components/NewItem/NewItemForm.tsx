@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IItem } from "../Item";
 import { serverRoute } from "../../routes";
 import "./NewItemForm.scss";
+import { ERR_ITEM_TO_CREATE_ALREADY_EXISTS_FMT, ERR_ITEM_TO_CREATE_EXISTS_ON_SERVER_FMT, constInterpolate } from "../../errorMessages";
 
 interface NewItemFormProps {
   appendItemIfUnique: (newItem: IItem) => void;
@@ -50,10 +51,16 @@ export default function NewItemForm(props: NewItemFormProps) {
     .then(res => {
       if (res.status === 409) {
         if (props.itemMethods.itemIsOnUI(itemName)) {
-          throw new Error("409");
+          throw new Error(constInterpolate(
+            ERR_ITEM_TO_CREATE_ALREADY_EXISTS_FMT,
+            [itemName]
+          ));
         } else {
           addItemToUI();
-          throw new Error("409 - adding to ui");
+          throw new Error(constInterpolate(
+            ERR_ITEM_TO_CREATE_EXISTS_ON_SERVER_FMT,
+            [itemName]
+          ));
         }
       }
       addItemToUI();
