@@ -12,7 +12,8 @@ interface NewItemModalProps {
     decrementItem: (itemName: string) => void;
     deleteItem: (itemName: string) => void;
     deleteItemOnUI: (itemName: string) => void;
-  }
+  },
+  appendError: (newError: string) => void;
 }
 
 export default function NewItemModal(props: NewItemModalProps) {
@@ -43,7 +44,8 @@ export default function NewItemModal(props: NewItemModalProps) {
             decrementItem: props.itemMethods.decrementItem,
             deleteItem: props.itemMethods.deleteItem,
             deleteItemOnUI: props.itemMethods.deleteItemOnUI
-          }} />
+          }}
+          appendError={props.appendError} />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ interface NewItemFormProps {
     deleteItem: (itemName: string) => void;
     deleteItemOnUI: (itemName: string) => void;
   }
+  appendError: (newError: string) => void;
 }
 
 export default function NewItemForm(props: NewItemFormProps) {
@@ -30,7 +31,14 @@ export default function NewItemForm(props: NewItemFormProps) {
       })
     })
     .then(res => res.json())
-    .then(() => {
+    .then(res => {
+      if (res.status === 409) {
+        // if in view
+
+        // if not in view
+        throw new Error("409");
+      }
+
       const newItem: IItem = {
         name: itemName,
         qty: quantity,
@@ -43,6 +51,9 @@ export default function NewItemForm(props: NewItemFormProps) {
       };
 
       props.appendItemIfUnique(newItem);
+    })
+    .catch(err => {
+      props.appendError(err.message);
     });
 
     props.closeModal();
