@@ -26,8 +26,8 @@ export function matchFmtString(fmtString: string, queryString: string): boolean 
 }
 
 // Search Bar.
-export const ERR_ITEM_ALREADY_DISPLAYED = "Item of this name has already been displayed.";
-export const ERR_ITEM_NOT_FOUND_FMT = "Item '{0}' could not be found.";
+export const ERR_ITEM_TO_SEARCH_ALREADY_DISPLAYED_FMT = "Item '{0}' has already been displayed.";
+export const ERR_ITEM_TO_SEARCH_NOT_FOUND_FMT = "Item '{0}' could not be found.";
 
 // New Item Form.
 export const ERR_ITEM_TO_CREATE_ALREADY_EXISTS_FMT = "Cannot create Item '{0}' as it already exists.";

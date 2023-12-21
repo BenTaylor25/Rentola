@@ -2,7 +2,7 @@ import { KeyboardEvent, useState } from 'react';
 import { serverRoute } from '../routes';
 import { IItem } from './Item';
 import './SearchBar.scss';
-import { ERR_ITEM_ALREADY_DISPLAYED, ERR_ITEM_NOT_FOUND_FMT, constInterpolate } from '../errorMessages';
+import { ERR_ITEM_TO_SEARCH_NOT_FOUND_FMT, ERR_ITEM_TO_SEARCH_ALREADY_DISPLAYED_FMT, constInterpolate } from '../errorMessages';
 
 interface SearchBarProps {
     appendItemIfUnique: (newItem: IItem) => boolean,
@@ -23,13 +23,20 @@ export default function SearchBar(props: SearchBarProps) {
                 if (res.ok) {
                     return res.json()
                 }
-                throw Error(constInterpolate(ERR_ITEM_NOT_FOUND_FMT, [searchText]));
+
+                throw Error(constInterpolate(
+                    ERR_ITEM_TO_SEARCH_NOT_FOUND_FMT,
+                    [searchText]
+                ));
             })
             .then(body => {
                 const wasUnique = props.appendItemIfUnique(body);
 
                 if (!wasUnique) {
-                    throw new Error(ERR_ITEM_ALREADY_DISPLAYED);
+                    throw new Error(constInterpolate(
+                        ERR_ITEM_TO_SEARCH_ALREADY_DISPLAYED_FMT,
+                        [searchText]
+                    ));
                 }
             })
             .catch(err => {
