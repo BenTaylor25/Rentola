@@ -5,6 +5,10 @@ form#new-item-form {
     gap: 3rem;
     font-size: 2rem;
 
+    label {
+        color: black;
+    }
+
     input {
         font-size: 2rem;
         width: 20rem;
