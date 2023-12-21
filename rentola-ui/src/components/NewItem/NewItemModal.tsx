@@ -37,6 +37,7 @@ export default function NewItemModal(props: NewItemModalProps) {
         </button>
         <NewItemForm
           appendItemIfUnique={props.appendItemIfUnique}
+          closeModal={props.close}
           itemMethods={{
             incrementItem: props.itemMethods.incrementItem,
             decrementItem: props.itemMethods.decrementItem,

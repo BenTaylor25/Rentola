@@ -5,6 +5,7 @@ import "./NewItemForm.scss";
 
 interface NewItemFormProps {
   appendItemIfUnique: (newItem: IItem) => void;
+  closeModal: () => void;
   itemMethods: {
     incrementItem: (itemName: string) => void;
     decrementItem: (itemName: string) => void;
@@ -29,9 +30,7 @@ export default function NewItemForm(props: NewItemFormProps) {
       })
     })
     .then(res => res.json())
-    .then(res => {
-      console.log(res);
-
+    .then(() => {
       const newItem: IItem = {
         name: itemName,
         qty: quantity,
@@ -45,6 +44,8 @@ export default function NewItemForm(props: NewItemFormProps) {
 
       props.appendItemIfUnique(newItem);
     });
+
+    props.closeModal();
   }
 
   return (
