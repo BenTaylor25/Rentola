@@ -7,7 +7,12 @@ interface NewItemModalProps {
   isOpen: boolean;
   close: () => void;
   appendItemIfUnique: (newItem: IItem) => void;
-  deleteItem: (itemName: string) => void;
+  itemMethods: {
+    incrementItem: (itemName: string) => void;
+    decrementItem: (itemName: string) => void;
+    deleteItem: (itemName: string) => void;
+    deleteItemOnUI: (itemName: string) => void;
+  }
 }
 
 export default function NewItemModal(props: NewItemModalProps) {
@@ -30,7 +35,14 @@ export default function NewItemModal(props: NewItemModalProps) {
         <button id="close-new-item-modal-button" onClick={props.close}>
           X
         </button>
-        <NewItemForm appendItemIfUnique={props.appendItemIfUnique} deleteItem={props.deleteItem} />
+        <NewItemForm
+          appendItemIfUnique={props.appendItemIfUnique}
+          itemMethods={{
+            incrementItem: props.itemMethods.incrementItem,
+            decrementItem: props.itemMethods.decrementItem,
+            deleteItem: props.itemMethods.deleteItem,
+            deleteItemOnUI: props.itemMethods.deleteItemOnUI
+          }} />
       </div>
     </div>
   );

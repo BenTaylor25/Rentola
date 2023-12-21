@@ -5,7 +5,12 @@ import "./NewItemForm.scss";
 
 interface NewItemFormProps {
   appendItemIfUnique: (newItem: IItem) => void;
-  deleteItem: (itemName: string) => void;
+  itemMethods: {
+    incrementItem: (itemName: string) => void;
+    decrementItem: (itemName: string) => void;
+    deleteItem: (itemName: string) => void;
+    deleteItemOnUI: (itemName: string) => void;
+  }
 }
 
 export default function NewItemForm(props: NewItemFormProps) {
@@ -30,7 +35,12 @@ export default function NewItemForm(props: NewItemFormProps) {
       const newItem: IItem = {
         name: itemName,
         qty: quantity,
-        delete: () => props.deleteItem(itemName)
+        methods: {
+          increment: () => props.itemMethods.incrementItem(itemName),
+          decrement: () => props.itemMethods.decrementItem(itemName),
+          delete: () => props.itemMethods.deleteItem(itemName),
+          deleteOnUI: () => props.itemMethods.deleteItemOnUI(itemName)
+        }
       };
 
       props.appendItemIfUnique(newItem);

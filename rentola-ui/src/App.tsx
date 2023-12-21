@@ -88,7 +88,12 @@ export default function App() {
         isOpen={newItemModalOpen}
         close={() => setNewItemModalOpen(false)}
         appendItemIfUnique={appendItemIfUnique}
-        deleteItem={deleteItem}
+        itemMethods={{
+          incrementItem,
+          decrementItem,
+          deleteItem,
+          deleteItemOnUI
+        }}
       />
     </>
   );
