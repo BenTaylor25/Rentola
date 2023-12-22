@@ -14,7 +14,10 @@ interface NewItemFormProps {
     deleteItemOnUI: (itemName: string) => void;
     itemIsOnUI: (itemName: string) => boolean;
   }
-  appendError: (newError: string) => void;
+  errorList: {
+    appendError: (newError: string) => void;
+    resetErrors: () => void;
+  }
 }
 
 export default function NewItemForm(props: NewItemFormProps) {
@@ -37,7 +40,7 @@ export default function NewItemForm(props: NewItemFormProps) {
   }
 
   function createItemRequest() {
-    // reset error list
+    props.errorList.resetErrors();
 
     fetch(`${serverRoute}/item`, {
       method: "POST",
@@ -67,7 +70,7 @@ export default function NewItemForm(props: NewItemFormProps) {
       } else if (res.status === 400) {
         for (const k in res.errors) {
           for (const err of res.errors[k]) {
-            props.appendError(err);
+            props.errorList.appendError(err);
           }
         }
       } else {
@@ -75,7 +78,7 @@ export default function NewItemForm(props: NewItemFormProps) {
       }
     })
     .catch(err => {
-      props.appendError(err.message);
+      props.errorList.appendError(err.message);
     });
 
     props.closeModal();

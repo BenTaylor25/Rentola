@@ -104,7 +104,10 @@ export default function App() {
           deleteItemOnUI,
           itemIsOnUI
         }}
-        appendError={appendError}
+        errorList={{
+          appendError,
+          resetErrors
+        }}
       />
     </>
   );

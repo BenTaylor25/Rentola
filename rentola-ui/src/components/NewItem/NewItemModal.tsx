@@ -14,7 +14,10 @@ interface NewItemModalProps {
     deleteItemOnUI: (itemName: string) => void;
     itemIsOnUI: (itemName: string) => boolean;
   },
-  appendError: (newError: string) => void;
+  errorList: {
+    appendError: (newError: string) => void;
+    resetErrors: () => void;
+  }
 }
 
 export default function NewItemModal(props: NewItemModalProps) {
@@ -47,7 +50,10 @@ export default function NewItemModal(props: NewItemModalProps) {
             deleteItemOnUI: props.itemMethods.deleteItemOnUI,
             itemIsOnUI: props.itemMethods.itemIsOnUI
           }}
-          appendError={props.appendError} />
+          errorList={{
+            appendError: props.errorList.appendError,
+            resetErrors: props.errorList.resetErrors
+          }} />
       </div>
     </div>
   );
