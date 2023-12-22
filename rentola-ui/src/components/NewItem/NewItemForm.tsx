@@ -37,6 +37,8 @@ export default function NewItemForm(props: NewItemFormProps) {
   }
 
   function createItemRequest() {
+    // reset error list
+
     fetch(`${serverRoute}/item`, {
       method: "POST",
       headers: {
@@ -62,8 +64,15 @@ export default function NewItemForm(props: NewItemFormProps) {
             [itemName]
           ));
         }
+      } else if (res.status === 400) {
+        for (const k in res.errors) {
+          for (const err of res.errors[k]) {
+            props.appendError(err);
+          }
+        }
+      } else {
+        addItemToUI();
       }
-      addItemToUI();
     })
     .catch(err => {
       props.appendError(err.message);
