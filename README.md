@@ -35,8 +35,9 @@ See `gallery.md` to see screenshots of how the application behaves.
 
 Requirements:
 - git
-- dotnet CLI
+- dotnet CLI (.NET 7)
 - npm
+- node 16+
 
 ### Clone the project.
 
@@ -64,17 +65,62 @@ Now open a browser and go to `localhost:5173`
 ## Project Structure
 
 In the root of the project we have 5 folders:
-- Docs
+- `Docs`
   - Markdown files describing each of the API endpoints.
-- Rentola
+- `Rentola`
   - Backend C# project.
-- rentola-ui
+- `rentola-ui`
   - Frontend React+TypeScript project
-- Rentola.Contract
+- `Rentola.Contract`
   - Describes external request and response bodies.
     - I don't think this is really required.
-- Test
+- `Test`
   - Holds files for testing the Backend.
     - Used with
     <a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">REST CLient</a>
     VSCode Extension.
+
+### Rentola
+
+- `Rentola`
+  - `Controllers`
+    - For API routes
+    - `ItemController.cs`
+      - Item API routes.
+    - `RentolaControllaBase.cs`
+      - Base class; handles error codes.
+  - `Models`
+    - `Item.cs`
+      - Handles the creation of Item objects.
+  - `ServiceErrors`
+    - `Errors.Item.cs`
+      - Holds error messages for service failures.
+  - `Services`
+    - Services hold business logic.
+    - `Items`
+      - `IItemService.cs`
+        - Interface for Item services - allows different implementations of the same idea.
+      - `ItemService.cs`
+        - Item business logic.
+
+### rentola-ui
+
+- `rentola-ui`
+  - `src`
+    - `components`
+      - `base`
+        - Components shared across all pages like navbar, footer, etc.
+        - `RentolaNav .tsx/.scss`
+      - `NewItem`
+        - Collection of components that regard creation of a new Item.
+        - `NewItemButton .tsx/.scss`
+        - `NewItemForm .tsx/.scss`
+        - `NewItemModal .tsx/.scss`
+      - `ErrorList .tsx/.scss`
+      - `Item .tsx/.scss`
+      - `ItemsContainer .tsx/.scss`
+      - `SearchBar .tsx/.scss`
+    - `App .tsx/.scss`
+    - `errorMessages.ts`
+    - `main.tsx / index.scss`
+    - `routes.ts`
