@@ -25,18 +25,22 @@ export default function NewItemForm(props: NewItemFormProps) {
   const [quantity, setQuantity] = useState(1);
 
   function addItemToUI() {
-      const newItem: IItem = {
-        name: itemName,
-        qty: quantity,
-        methods: {
-          increment: () => props.itemMethods.incrementItem(itemName),
-          decrement: () => props.itemMethods.decrementItem(itemName),
-          delete: () => props.itemMethods.deleteItem(itemName),
-          deleteOnUI: () => props.itemMethods.deleteItemOnUI(itemName)
-        }
-      };
+    const newItem: IItem = {
+      name: itemName,
+      qty: quantity,
+      methods: {
+        increment: () => props.itemMethods.incrementItem(itemName),
+        decrement: () => props.itemMethods.decrementItem(itemName),
+        delete: () => props.itemMethods.deleteItem(itemName),
+        deleteOnUI: () => props.itemMethods.deleteItemOnUI(itemName)
+      },
+      errorList: {
+        appendError: props.errorList.appendError,
+        resetErrors: props.errorList.resetErrors
+      }
+    };
 
-      props.appendItemIfUnique(newItem);
+    props.appendItemIfUnique(newItem);
   }
 
   function createItemRequest() {
