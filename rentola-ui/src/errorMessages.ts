@@ -35,3 +35,6 @@ export const ERR_ITEM_TO_CREATE_EXISTS_ON_SERVER_FMT = "Item '{0}' already exist
 
 // Decrement Alert.
 export const ALRT_DECREMENT_TO_DELETION_FMT = "Item '{0}' has been deleted as its quantity reached 0.";
+
+// Increment Error.
+export const ERR_INCREMENT_ABOVE_MAX = "Items cannot have a quantity above 10,000."

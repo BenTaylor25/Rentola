@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import "./Item.scss";
-import { ALRT_DECREMENT_TO_DELETION_FMT, constInterpolate } from "../errorMessages";
+import { ALRT_DECREMENT_TO_DELETION_FMT, ERR_INCREMENT_ABOVE_MAX, constInterpolate } from "../errorMessages";
 
 export interface IItem {
   name: string;
@@ -25,7 +25,11 @@ export default function Item(props: IItem) {
     props.errorList.resetErrors();
     props.methods.increment();
 
-    setUiQty(uiQty + 1);
+    if (uiQty === 10_000) {
+      props.errorList.appendError(ERR_INCREMENT_ABOVE_MAX);
+    } else {
+      setUiQty(uiQty + 1);
+    }
   }
 
   function decrementButtonClick() {
