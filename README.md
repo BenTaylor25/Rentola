@@ -14,8 +14,3 @@ Item names must be between 3 and 25 characters.
 Item quantities must be between 1 and 10,000.
 
 Decrementing an Item's quantity to 0 will result in its deletion.
-
-
-## Status
-Backend: Done.  
-Frontend: Main functionality done; just adding error reporting.
