@@ -13,12 +13,25 @@ export default function App() {
   const [newItemModalOpen, setNewItemModalOpen] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
 
-  function appendItemIfUnique(newItem: IItem): boolean {
+  async function appendItemIfUnique(newItem: IItem): Promise<boolean> {
     for (const item of items) {
       if (item.name == newItem.name) {
         return false;
       }
     }
+
+    await fetch(`${serverRoute}/item/${newItem.name}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+
+        throw Error("Item not on server.");
+      })
+      .then(body => {
+        newItem.qty = body.qty;
+      })
+      .catch(() => {});
 
     setItems([...items, newItem]);
     return true;

@@ -5,7 +5,7 @@ import './SearchBar.scss';
 import { ERR_ITEM_TO_SEARCH_NOT_FOUND_FMT, ERR_ITEM_TO_SEARCH_ALREADY_DISPLAYED_FMT, constInterpolate } from '../errorMessages';
 
 interface SearchBarProps {
-    appendItemIfUnique: (newItem: IItem) => boolean,
+    appendItemIfUnique: (newItem: IItem) => Promise<boolean>,
     errorList: {
         appendError: (newError: string) => void,
         resetErrors: () => void
