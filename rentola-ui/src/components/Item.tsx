@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import "./Item.scss";
+import { ALRT_DECREMENT_TO_DELETION_FMT, constInterpolate } from "../errorMessages";
 
 export interface IItem {
   name: string;
@@ -32,6 +33,10 @@ export default function Item(props: IItem) {
     props.methods.decrement();
 
     if (uiQty === 1) {
+      props.errorList.appendError(constInterpolate(
+        ALRT_DECREMENT_TO_DELETION_FMT,
+        [props.name]
+      ));
       props.methods.deleteOnUI();
       /*
         The server will remove the item

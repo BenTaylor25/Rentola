@@ -25,10 +25,13 @@ export function matchFmtString(fmtString: string, queryString: string): boolean 
     return regex.test(queryString);
 }
 
-// Search Bar.
+// Search Bar Errors.
 export const ERR_ITEM_TO_SEARCH_ALREADY_DISPLAYED_FMT = "Item '{0}' has already been displayed.";
 export const ERR_ITEM_TO_SEARCH_NOT_FOUND_FMT = "Item '{0}' could not be found.";
 
-// New Item Form.
+// New Item Form Errors.
 export const ERR_ITEM_TO_CREATE_ALREADY_EXISTS_FMT = "Cannot create Item '{0}' as it already exists.";
 export const ERR_ITEM_TO_CREATE_EXISTS_ON_SERVER_FMT = "Item '{0}' already exists on the server; retreiving.";
+
+// Decrement Alert.
+export const ALRT_DECREMENT_TO_DELETION_FMT = "Item '{0}' has been deleted as its quantity reached 0.";
