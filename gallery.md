@@ -29,5 +29,34 @@
 
 ### Refresh and try to add new item of same name
 ![image](https://github.com/BenTaylor25/Rentola/assets/97246704/34b1faed-c6ef-41f1-a697-12bfac5c6561)
-![image](https://github.com/BenTaylor25/Rentola/assets/97246704/30de7746-fa82-4582-85b2-e6b7b4740cdd)
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/f0a0693d-87ac-4fcf-b94a-a46e47ac8b27)
+(Notice that the quantity of the item added to the UI is that of the server, not of the UI).
+
+---
+
+### Create Item with a name length < 3 and quantity <= 0
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/6f6aa384-885a-400e-a39e-e7c1c13bfd49)
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/73c60765-f3bb-4499-817a-2287df4c3db2)
+
+---
+
+### Create an Item with a quantity of 1
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/a4a705f6-1772-4bc1-91bf-57d3374a45bc)
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/22a85dac-8d7a-41c8-be36-1af6dbd831ca)
+
+### Decrement to quantity 0
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/de2dfd1e-7108-4a8a-82d7-de0ba672be95)
+
+---
+
+### Delete Item
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/8368bb15-befb-4e87-adba-98e7df8d1c36)
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/ebfec606-6626-4b4e-8b45-377a38bcabb0)
+
+---
+
+### Search for an Item that doesn't exist
+
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/70964e7f-31b5-4fd1-8fa0-7d3df82cab85)
+![image](https://github.com/BenTaylor25/Rentola/assets/97246704/1fe6ac33-025f-4e25-bb74-4fbc1021d466)
 
