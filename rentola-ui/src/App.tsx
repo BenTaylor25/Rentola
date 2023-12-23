@@ -91,6 +91,10 @@ export default function App() {
           deleteItem,
           deleteItemOnUI
         }}
+        errorList={{
+          appendError,
+          resetErrors
+        }}
       />
 
       <NewItemModal

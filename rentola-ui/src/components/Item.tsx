@@ -11,18 +11,24 @@ export interface IItem {
     delete: () => void;
     deleteOnUI: () => void;
   }
+  errorList: {
+    appendError: (newError: string) => void;
+    resetErrors: () => void;
+  }
 }
 
 export default function Item(props: IItem) {
   const [uiQty, setUiQty] = useState(props.qty);
 
   function incrementButtonClick() {
+    props.errorList.resetErrors();
     props.methods.increment();
 
     setUiQty(uiQty + 1);
   }
 
   function decrementButtonClick() {
+    props.errorList.resetErrors();
     props.methods.decrement();
 
     if (uiQty === 1) {
@@ -37,6 +43,11 @@ export default function Item(props: IItem) {
     }
   }
 
+  function deleteButtonClick() {
+    props.errorList.resetErrors();
+    props.methods.delete();
+  }
+
   return (
     <div className="item">
       <p>{props.name}</p>
@@ -47,7 +58,7 @@ export default function Item(props: IItem) {
         <button onClick={incrementButtonClick}>+</button>
       </div>
 
-      <button className="item-delete-button" onClick={props.methods.delete}>
+      <button className="item-delete-button" onClick={deleteButtonClick}>
         <RiDeleteBin2Fill />
       </button>
     </div>

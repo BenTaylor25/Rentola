@@ -11,6 +11,10 @@ interface ItemsSectionProps {
     deleteItem: (itemName: string) => void;
     deleteItemOnUI: (itemName: string) => void;
   }
+  errorList: {
+    appendError: (newError: string) => void;
+    resetErrors: () => void;
+  }
 }
 
 export default function ItemsContainer(props: ItemsSectionProps) {
@@ -26,6 +30,10 @@ export default function ItemsContainer(props: ItemsSectionProps) {
             decrement: () => props.itemMethods.decrementItem(item.name),
             delete: () => props.itemMethods.deleteItem(item.name),
             deleteOnUI: () => props.itemMethods.deleteItemOnUI(item.name)
+          }}
+          errorList={{
+            appendError: props.errorList.appendError,
+            resetErrors: props.errorList.resetErrors
           }}
         />
       ))}
