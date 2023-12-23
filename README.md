@@ -59,3 +59,22 @@ from /Rentola
 ### Browser
 
 Now open a browser and go to `localhost:5173`
+
+
+## Project Structure
+
+In the root of the project we have 5 folders:
+- Docs
+  - Markdown files describing each of the API endpoints.
+- Rentola
+  - Backend C# project.
+- rentola-ui
+  - Frontend React+TypeScript project
+- Rentola.Contract
+  - Describes external request and response bodies.
+    - I don't think this is really required.
+- Test
+  - Holds files for testing the Backend.
+    - Used with
+    <a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">REST CLient</a>
+    VSCode Extension.
