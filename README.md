@@ -124,3 +124,11 @@ In the root of the project we have 5 folders:
     - `errorMessages.ts`
     - `main.tsx / index.scss`
     - `routes.ts`
+
+
+## Name
+
+The name Rentola comes from a character in Mass Effect.
+
+<a href="https://masseffect.fandom.com/wiki/Rentola">Commander Rentola</a>
+is a merchant that you meet in a very important mission in the first game.
