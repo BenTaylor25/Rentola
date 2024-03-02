@@ -1,5 +1,7 @@
 using Rentola.Services.Items;
 
+const string FRONTEND_URL = "http://localhost:5173";
+
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
@@ -8,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddCors(setup => {
         setup.AddDefaultPolicy(policyBuilder => {
             policyBuilder
-                .WithOrigins("http://localhost:5173")
+                .WithOrigins(FRONTEND_URL)
                 .WithMethods("GET", "POST", "PUT", "DELETE")
                 .AllowAnyHeader();
         });

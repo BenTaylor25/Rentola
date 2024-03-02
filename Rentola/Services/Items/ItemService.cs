@@ -23,7 +23,7 @@ public class ItemService : IItemService
 
     public ErrorOr<Item> GetItem(string name)
     {
-        if (_items.TryGetValue(name, out var item))
+        if (_items.TryGetValue(name, out Item? item))
         {
             return item;
         }
@@ -34,27 +34,26 @@ public class ItemService : IItemService
     {
         if (_items.TryGetValue(name, out var item))
         {
-            if (item.Qty + amount <= 10_000)
+            if (item.Qty + amount <= Item.MAX_QTY)
             {
                 item.Qty += amount;
                 return item;
             }
 
-            // Qty Max error
             return Errors.Item.QuantityTooLarge;
         }
 
-        // Not Found error
         return Error.NotFound();
     }
 
     public ErrorOr<DecrementItemResult> DecrementItem(string name, int amount)
     {
-        if (_items.TryGetValue(name, out var item))
+        if (_items.TryGetValue(name, out Item? item))
         {
             if (item.Qty - amount > 0)
             {
                 item.Qty -= amount;
+
                 return new DecrementItemResult(
                     WasDeleted: false,
                     Item: item
@@ -71,11 +70,9 @@ public class ItemService : IItemService
                 return new DecrementItemResult(WasDeleted: true);
             }
 
-            // Qty <0 error
             return Errors.Item.QuantityNotPositive;
         }
 
-        // Not Found error
         return Error.NotFound();
     }
 

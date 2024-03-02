@@ -36,7 +36,6 @@ public class Item
         else if (qty > MAX_QTY)
         {
             errors.Add(Errors.Item.QuantityTooLarge);
-
         }
 
         if (name.Length < MIN_NAME_LEN)

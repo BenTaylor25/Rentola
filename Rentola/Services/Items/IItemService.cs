@@ -1,6 +1,4 @@
-
 using ErrorOr;
-using Microsoft.AspNetCore.Mvc;
 using Rentola.Models;
 using Rentola.Services.Results.DecrementItemResult;
 
